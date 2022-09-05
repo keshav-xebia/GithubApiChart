@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('Home.urls')),
-] 
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG == False:
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
