@@ -1,5 +1,6 @@
 django
 requests
+whitenoise
 django-hosts
 djangorestframework
 django-cors-headers
