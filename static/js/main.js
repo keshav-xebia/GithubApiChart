@@ -14,7 +14,7 @@ const app = Vue.createApp({
             console.log(e)
             org = this.org.toLocaleLowerCase()
             topr = this.topr
-            const url = 'http://api.django.server:8000/repos'
+            const url = 'https://api.github-api-chart.vercel.app/repos'
             let payload = { "org": org, "top": topr }
 
             document.getElementById('dch').innerHTML = '<center><h1 class="m-5"> Loading Results for your Bar Chart Query ......... <div class="spinner-border text-danger" role="status"><span class="visually-hidden">Loading...</span></div></h1></center> <br><hr><br> <h4 class="mb-5"> You Query Contains Organization: '+org.toLocaleUpperCase()+' for Top '+topr+' Repositories (sorted by Stars) </h4>'
@@ -30,7 +30,7 @@ const app = Vue.createApp({
             view = this.view
             stime = new Date(this.stime).toISOString()
             etime = new Date(this.etime).toISOString()
-            const url = "http://api.django.server:8000/repos/" + org + "/" + repo + "/commits/"
+            const url = "https://api.github-api-chart.vercel.app/repos/" + org + "/" + repo + "/commits/"
             let payload = { "since": stime, "until": etime, "view": view }
 
             document.getElementById('dch').innerHTML = '<center><h1 class="m-5"> Loading Results for your Line Chart Query ......... <div class="spinner-border text-danger" role="status"><span class="visually-hidden">Loading...</span></div></h1></center> <br><hr><br> <h4 class="mb-5"> You Query Contains Organization: '+org.toLocaleUpperCase()+' and Repository: '+repo.toLocaleUpperCase()+' for '+view.toLocaleUpperCase()+view.toLocaleUpperCase()+': view</h4>'
