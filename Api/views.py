@@ -68,24 +68,31 @@ def repos(request):
     }
 
     # Adding Result to final Response 
-    if top:
-        for i in range(top):
-            final['results'].append({
-                'name': result[i][0],
-                'stars': result[i][1]
-            })
-    elif len(result) > 10:
-        for i in range(10):
-            final['results'].append({
-                'name': result[i][0],
-                'stars': result[i][1]
-            })
-    else:
+    try:
+        if top:
+            for i in range(top):
+                final['results'].append({
+                    'name': result[i][0],
+                    'stars': result[i][1]
+                })
+        elif len(result) > 10:
+            for i in range(10):
+                final['results'].append({
+                    'name': result[i][0],
+                    'stars': result[i][1]
+                })
+        else:
+            for v in result:
+                final['results'].append({
+                    'name': v[0],
+                    'stars': v[1]
+                })
+    except:
         for v in result:
             final['results'].append({
-                'name': v[0],
-                'stars': v[1]
-            })
+                   'name': v[0],
+                   'stars': v[1]
+               })
 
     etime = datetime.now()
     ttime =  (etime.minute - stime.minute)*60 + etime.second - stime.second
